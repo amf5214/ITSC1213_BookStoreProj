@@ -23,10 +23,11 @@ public class BookStore {
         this.memberOrders = new Hashtable<>();
     }
 
-    public void signUp(String userName, MembershipType type) {
+    public long signUp(String userName, MembershipType type) {
         Member currentUser = new Member(userName, type);
         this.members.put(currentUser.getUserName(), currentUser);
         this.memberOrders.put(currentUser, new ArrayList<>());
+        return(currentUser.getMemberId());
     }
 
     public void setUserDetails(String userName, String fName, String lName, LocalDate birthDate) {
@@ -46,6 +47,14 @@ public class BookStore {
 
     public Member getMember(String userName) {
         return members.get(userName);
+    }
+
+    public Hashtable<Long, Product> getProducts() {
+        return(products);
+    }
+
+    public Hashtable<Long, Sale> getSales() {
+        return(sales);
     }
 
     public long createSale(Member member) {
@@ -117,7 +126,13 @@ public class BookStore {
         return(totalCost);
     }
 
-    public void print(long orderNum) {
+    public void printItem(long itemNum) {
+        Product currentProduct = products.get(itemNum);
+        System.out.println("\tItem Number: " + currentProduct.getProductId() + ", Name: " + currentProduct.getItemName()
+                + ", Type: " + currentProduct.getProductType() + ", Price: $" + currentProduct.getUnitPrice() + ", Qua: " + currentProduct.getQuantity());
+    }
+
+    public void printSale(long orderNum) {
         Sale currentOrder = sales.get(orderNum);
         System.out.println("\n----------------Order-------------");
         System.out.println("Customer Username: " + currentOrder.getCustomer().getUserName());

@@ -14,6 +14,7 @@ public class Member {
     private LocalDate birthDate;
     private Membership membership;
     private String userName;
+    private PaymentMethod payMethod;
 
     public Member(String userName, MembershipType type) {
         this.memberId = nextMemberNum;
@@ -86,4 +87,11 @@ public class Member {
         this.userName = userName;
     }
 
+    public PaymentMethod getPayMethod() {
+        return payMethod;
+    }
+
+    public void setPayMethod(PaymentMethod payMethod) {
+        this.payMethod = payMethod;
+    }
 }

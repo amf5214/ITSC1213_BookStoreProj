@@ -10,6 +10,11 @@ import java.time.LocalDate;
 public class main {
 
     public static void main(String[] args) {
+        BookStoreInterface bookStoreInterface = new BookStoreInterface();
+        bookStoreInterface.run();
+    }
+
+    public static void test() {
         BookStore testStore = new BookStore();
 
         testStore.signUp("afraley", MembershipType.BASIC);
@@ -25,8 +30,8 @@ public class main {
         testStore.addProductToSale(orderNum, item1, 3);
         testStore.addProductToSale(orderNum, item2, 4);
 
-        testStore.print(orderNum);
+        testStore.printSale(orderNum);
         testStore.removeProductFromSale(orderNum, item1);
-        testStore.print(orderNum);
+        testStore.printSale(orderNum);
     }
  }

@@ -14,6 +14,7 @@ public class Sale {
     private Member customer;
     private LocalDateTime saleTime;
 
+
     public Sale(Member member) {
         this.customer = member;
         this.orderNum = nextOrderNum;
