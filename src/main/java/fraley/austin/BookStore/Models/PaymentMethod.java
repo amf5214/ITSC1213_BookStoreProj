@@ -16,6 +16,13 @@ public class PaymentMethod {
         this.expDate = expDate;
     }
 
+    public PaymentMethod() {
+    }
+
+    public boolean isInstantiated() {
+        return(cardNumber != 0);
+    }
+
     public long getCardNumber() {
         return cardNumber;
     }
@@ -46,5 +53,21 @@ public class PaymentMethod {
 
     public void setExpDate(LocalDate expDate) {
         this.expDate = expDate;
+    }
+
+    public void printCardInfo() {
+        System.out.println("--------------Current Payment Method---------------");
+        System.out.println("Cardholder Name: " + getCardholder());
+        System.out.println("Card Number: " + getCardNumber());
+        System.out.println("Card CVC #: " + getCvc());
+        System.out.println("Card Expiration Date: " + getExpDate());
+        System.out.println("---------------------------------------------------");
+    }
+
+    @Override
+    public String toString() {
+        return("\n\t" + getCardholder() + "\n\t"
+                + getCardNumber() + "\n\t"
+                + getExpDate() + " " + getCvc());
     }
 }

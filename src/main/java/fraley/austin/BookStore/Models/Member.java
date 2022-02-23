@@ -21,6 +21,7 @@ public class Member {
         incrementNextMemberNum();
         this.userName = userName;
         this.membership = new Membership(type);
+        this.payMethod = new PaymentMethod();
     }
 
     public static void incrementNextMemberNum() {

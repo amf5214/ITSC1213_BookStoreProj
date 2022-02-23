@@ -1,5 +1,6 @@
-package fraley.austin.BookStore;
+package fraley.austin.BookStore.UIs;
 
+import fraley.austin.BookStore.Security.PasswordEncryptor;
 import fraley.austin.BookStore.UIs.CustomerHomeInterface;
 import fraley.austin.BookStore.UIs.EmployeeInterface;
 import fraley.austin.BookStore.Models.BookStore;
@@ -8,17 +9,17 @@ import java.util.Scanner;
 
 public class BookStoreInterface {
 
-    private Scanner sc;
-    private BookStore store;
-    private EmployeeInterface employeeInterface;
-    private CustomerHomeInterface customerHomeInterface;
-    private boolean continueRunning = true;
+    private final Scanner sc;
+    private final EmployeeInterface employeeInterface;
+    private final CustomerHomeInterface customerHomeInterface;
+    private boolean continueRunning;
 
-    BookStoreInterface() {
+    public BookStoreInterface() {
         this.sc = new Scanner(System.in);
-        this.store = new BookStore();
+        BookStore store = new BookStore();
         this.employeeInterface = new EmployeeInterface(sc, store);
         this.customerHomeInterface = new CustomerHomeInterface(sc, store);
+        continueRunning = true;
     }
 
     public void run() {
@@ -31,7 +32,7 @@ public class BookStoreInterface {
 
             switch(userChoice) {
                 case 1:
-                    customerHomeInterface.accntManagementInterface();
+                    customerHomeInterface.customerHomeInterface();
                     break;
                 case 2:
                     employeeInterface.employeeInterface();
@@ -43,7 +44,6 @@ public class BookStoreInterface {
                     break;
             }
         }
-        sc.close();
     }
 
 }

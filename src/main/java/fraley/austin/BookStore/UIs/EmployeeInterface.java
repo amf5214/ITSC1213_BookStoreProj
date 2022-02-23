@@ -31,6 +31,8 @@ public class EmployeeInterface {
             System.out.println("\t 6. Back");
 
             int userChoice = sc.nextInt();
+            sc.nextLine();
+
             switch (userChoice) {
                 case 1:
                     addInventoryItem();
@@ -47,6 +49,7 @@ public class EmployeeInterface {
                 case 5:
                     System.out.println("What order would you like to access?");
                     long orderId = sc.nextLong();
+                    sc.nextLine();
                     store.printSale(orderId);
                     break;
                 case 6:

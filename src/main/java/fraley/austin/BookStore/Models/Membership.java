@@ -10,18 +10,17 @@ public class Membership {
 
     private long membershipId;
     private MembershipType mType;
-    private String shippingAddress;
-    private String shippingCity;
-    private int shippingZipcode;
-    private USState shippingState;
+    private Address shippingAddress;
     private boolean goodStanding;
     private double membershipFee;
 
     public Membership(MembershipType type) {
         this.membershipId = nextMembershipNum;
-        incrementNextMembershipNum();
+        this.shippingAddress = new Address();
         this.mType = type;
+        this.goodStanding = true;
         setMembershipFee();
+        incrementNextMembershipNum();
     }
 
     private static void incrementNextMembershipNum() {
@@ -32,7 +31,7 @@ public class Membership {
         nextMembershipNum -= 1;
     }
 
-    private void setMembershipFee() {
+    public void setMembershipFee() {
         this.membershipFee = this.mType.equals(MembershipType.BASIC) ? MembershipCosts.BASIC : MembershipCosts.PREMIUM;
     }
 
@@ -48,35 +47,27 @@ public class Membership {
         this.mType = mType;
     }
 
-    public String getShippingAddress() {
+    public Address getShippingAddress() {
         return shippingAddress;
     }
 
-    public void setShippingAddress(String shippingAddress) {
+    public void setShippingAddress(Address shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
 
-    public String getShippingCity() {
-        return shippingCity;
+    public boolean isGoodStanding() {
+        return goodStanding;
     }
 
-    public void setShippingCity(String shippingCity) {
-        this.shippingCity = shippingCity;
+    public void setGoodStanding(boolean goodStanding) {
+        this.goodStanding = goodStanding;
     }
 
-    public int getShippingZipcode() {
-        return shippingZipcode;
+    public double getMembershipFee() {
+        return membershipFee;
     }
 
-    public void setShippingZipcode(int shippingZipcode) {
-        this.shippingZipcode = shippingZipcode;
-    }
-
-    public USState getShippingState() {
-        return shippingState;
-    }
-
-    public void setShippingState(USState shippingState) {
-        this.shippingState = shippingState;
+    public void setMembershipFee(double membershipFee) {
+        this.membershipFee = membershipFee;
     }
 }
